@@ -1,0 +1,19 @@
+#include <windows.h>
+#include "resource.h"
+
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CHAT_SERVER DIALOGEX 0, 0, 261, 132
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "IOCP_채팅서버"
+FONT 9, "MS Shell Dlg"
+BEGIN
+LTEXT       "Connections:", IDC_STATIC, 7, 7, 80, 10
+LISTBOX     IDC_CONN_LIST, 7, 20, 192, 104, LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP | WS_BORDER
+PUSHBUTTON  "닫기", IDC_CLOSE, 204, 7, 50, 14, WS_TABSTOP
+END

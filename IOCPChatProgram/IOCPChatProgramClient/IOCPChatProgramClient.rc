@@ -1,0 +1,63 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+#include "resource.h"
+
+// LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT 를 쓰고 싶다면 winres.h가 필요
+LANGUAGE 18, 1  // (= LANG_KOREAN, SUBLANG_DEFAULT)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Chat Client (main) dialog
+//
+IDD_CHAT_CLIENT DIALOGEX 0, 0, 360, 220
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_CAPTION | WS_SYSMENU
+CAPTION "IOCPClientChat"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    LTEXT       "메이플월드 게임개발 파티원 모집 단톡방", IDC_ROOM_TITLE, 7, 7, 346, 20, SS_CENTER | WS_CHILD | WS_VISIBLE
+    LISTBOX     IDC_MSG_LIST, 7, 30, 346, 149, LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP | WS_BORDER
+    EDITTEXT    IDC_MSG,      7, 183, 280, 14, ES_AUTOHSCROLL | WS_BORDER
+    PUSHBUTTON  "보내기",     IDC_SEND, 295, 182, 58, 16, WS_TABSTOP
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Login dialog
+//
+IDD_CHAT_LOGIN DIALOGEX 0, 0, 240, 110
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_CAPTION | WS_SYSMENU | DS_CENTER
+CAPTION "로그인"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    LTEXT       "닉네임:",     IDC_STATIC,    7, 12, 40, 10
+    EDITTEXT    IDC_CHAT_NAME, 50, 10, 160, 14, ES_AUTOHSCROLL | WS_BORDER
+
+    LTEXT       "직무:", IDC_STATIC, 7, 36, 40, 10
+    COMBOBOX    IDC_ROLE, 50, 34, 180, 100, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+
+    PUSHBUTTON  "로그인",       IDC_LOGIN,     50, 72, 60, 16, WS_TABSTOP
+    PUSHBUTTON  "취소",        IDCANCEL,     120, 72, 60, 16, WS_TABSTOP
+END
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
