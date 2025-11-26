@@ -55,7 +55,6 @@
 ## 📸 Result
 [![IOCP](https://img.youtube.com/vi/8AwmbsfYYeU/mqdefault.jpg)](https://youtu.be/8AwmbsfYYeU)
 
-> **Result:** 붉은 점(GPS 노이즈)이 튀는 상황에서도, 파란 선(Kalman Filter)은 물리 법칙에 기반하여 부드럽고 정확한 경로를 유지함을 확인했습니다. (이미지를 클릭하여 영상을 확인하세요)
 ## 💻 Core Code Review
 
 ### 1. Server: IOCP Worker Thread
