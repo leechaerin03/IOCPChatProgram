@@ -52,6 +52,9 @@
 
 <br>
 
+## 📸 Result
+ [(https://img.youtube.com/vi/8AwmbsfYYeU/mqdefault.jpg)](https://youtu.be/8AwmbsfYYeU) 
+
 ## 💻 Core Code Review
 
 ### 1. Server: IOCP Worker Thread
