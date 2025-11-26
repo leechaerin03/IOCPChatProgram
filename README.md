@@ -54,35 +54,3 @@
 
 ## 📸 Result
 [![IOCP](https://img.youtube.com/vi/8AwmbsfYYeU/mqdefault.jpg)](https://youtu.be/8AwmbsfYYeU)
-
-## 💻 Core Code Review
-
-### 1. Server: IOCP Worker Thread
-`GetQueuedCompletionStatus`를 통해 I/O 완료 통지(Packet)를 대기하며, 완료된 작업의 종류(Accept, Recv, Close)에 따라 분기 처리합니다. 특히 `AcceptEx` 완료 시 다음 연결을 위해 즉시 새로운 비동기 Accept를 예약하는 것이 핵심입니다.
-
-```cpp
-unsigned __stdcall Threads::InnerCommThread(void)
-{
-    // ... (변수 선언 생략)
-    while (1) {
-        // 완료 큐에서 I/O 작업 결과 확인
-        BOOL ok = GetQueuedCompletionStatus(hIOCP, &cbTransferred, &completionKey, &pOV, INFINITE);
-        SOCKET sock = (SOCKET)completionKey; 
-
-        // 1. 새로운 클라이언트 접속 (AcceptEx 완료)
-        if (sock == lstnsock) {
-            // ... (소켓 컨텍스트 업데이트)
-            OnAccept(pAcceptOV ? pAcceptOV->commsock : INVALID_SOCKET, acceptBuf);
-
-            // 중요: 끊김 없는 접속 처리를 위해 다음 AcceptEx 미리 등록 (Pipeline 유지)
-            SOCKET commsock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
-            AcceptEx(lstnsock, commsock, acceptBuf, 0, ..., &dwBytes, (WSAOVERLAPPED*)pAOV);
-            continue;
-        }
-        
-        // 2. 데이터 수신 (Recv 완료)
-        OVERLAPPEDSOCK* pMOV = (OVERLAPPEDSOCK*)pOV; 
-        OnRead(pMOV, pMOV->wsaBuf.buf, (int)cbTransferred); // 내부에서 Recv 재요청(Post)
-    }
-    return 0;
-}
